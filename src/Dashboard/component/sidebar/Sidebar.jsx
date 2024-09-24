@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "./Sidebar.css";
-import Logo from "../../../image/logo-team/Technix-opengraph.png";
+// import "./sidebar.css";
+import './sidebar.css'
+import { Logo } from "../Logo/Logo";
 import { SidebarData } from "./data-in-sidebar/SidebarData";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
-import { IoPersonCircle } from "react-icons/io5";
+// import { IoPersonCircle } from "react-icons/io5";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState(0);
@@ -36,8 +37,12 @@ const Sidebar = () => {
         animate={window.innerWidth <= 768 ? `${expanded}` : ""}
       >
         {/* logo */}
-        <div className="logo flex flex-col justify-center items-center mx-[10px] " style={{margin:"0 20px"}}>
-          <IoPersonCircle size={100} className="text-blue-500" />
+        <div
+          className="logo flex flex-col justify-center items-center mx-[10px] "
+          style={{ margin: "0 20px" }}
+        >
+          {/* <IoPersonCircle size={100} className="text-blue-500" /> */}
+          <UilBars size={100} className="text-blue-500" />
           <h1>hosein</h1>
         </div>
 
