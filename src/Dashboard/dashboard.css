@@ -1,0 +1,66 @@
+:root {
+    --blue-light: linear-gradient(180deg, #a0d8ef -146.42%, #6bb9e4 -46.42%);
+    --blue-dark: #003366;
+    --black: #242d49;
+    --gray: #788097;
+    --purple: linear-gradient(180deg, #bb67ff 0%, #c484f3 100%);
+    --pink: #ff919d;
+    --glass: rgba(255, 255, 255, 0.54);
+    --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+    --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+    --activeItem: #f799a354;
+  }
+  
+  .boxx {
+    width: 100%;
+    color: var(--black);
+    background: linear-gradient(
+      106.37deg,
+      #b3e0ff 29.63%,
+      #80c1ff 51.55%,
+      #4da3ff 90.85%
+    );
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+  }
+  
+  .AppGlass {
+    display: flex;
+    flex-direction: row;
+    height: 97%;
+    width: 97%;
+    background: var(--glass);
+    border-radius: 2rem;
+    gap: 16px;
+    overflow: hidden;
+  }
+  
+  .AppGlass .sidebar {
+    width: 13rem;
+    flex-shrink: 0;
+  }
+  
+  .AppGlass .content {
+    flex-grow: 1;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .AppGlass {
+      flex-direction: column;
+      overflow-y: scroll;
+    }
+  
+    .AppGlass .sidebar {
+      width: 10%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .AppGlass {
+      flex-direction: column;
+    }
+  }
+  
