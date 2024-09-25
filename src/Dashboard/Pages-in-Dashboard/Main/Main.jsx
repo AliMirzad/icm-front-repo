@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import fetchData from "../../../Api/getDataUserIcm";
 import AddUser from "../../../Api/addUser";
 import updateUser from "../../../Api/updateUser";
-import Modal from "./Modal-for-add-user/Modal";
-import ModalInfo from "./modal-for-detail-userInfo/ModalInfo";
-import EditUserModal from "./Modal-For-Edit/EditUserModal";
+import Modal from "./Modal/ModalAddUser";
+import ModalInfo from "./Modal/ModalInfo";
+import ModalEdit from "./Modal/ModalEdit";
 import { FaUserPlus } from "react-icons/fa6";
 import { FcNext } from "react-icons/fc";
 import { FcPrevious } from "react-icons/fc";
@@ -199,7 +199,7 @@ export const Main = () => {
         user={selectedUser}
       />
 
-      <EditUserModal
+      <ModalEdit
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         onUpdateUser={handleUpdateUser}

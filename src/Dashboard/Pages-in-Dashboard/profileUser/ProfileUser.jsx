@@ -1,4 +1,4 @@
-import hos from "../../../image/hosein.jpg";
+import hos from "../../../images/hosein.jpg";
 export const ProfileUser = () => {
   return (
     <div className="flex  justify-center  w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">

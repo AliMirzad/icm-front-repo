@@ -7,7 +7,7 @@ import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
-// import { IoPersonCircle } from "react-icons/io5";
+import { IoPersonCircle } from "react-icons/io5";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState(0);
@@ -41,8 +41,8 @@ const Sidebar = () => {
           className="logo flex flex-col justify-center items-center mx-[10px] "
           style={{ margin: "0 20px" }}
         >
-          {/* <IoPersonCircle size={100} className="text-blue-500" /> */}
-          <UilBars size={100} className="text-blue-500" />
+          <IoPersonCircle size={100} className="text-blue-500" />
+          {/* <UilBars size={100} className="text-blue-500" /> */}
           <h1>hosein</h1>
         </div>
 

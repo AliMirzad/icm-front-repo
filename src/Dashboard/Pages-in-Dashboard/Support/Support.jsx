@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SupportModal from "./supportModal/SupportModal";
-import pic from "../../../image/hosein.jpg";
+import Modal from "./Modal/Modal";
+import pic from "../../../images/hosein.jpg";
 export const Support = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -30,7 +30,7 @@ export const Support = () => {
         </button>
       </div>
 
-      <SupportModal isOpen={isModalOpen} onClose={handleModalToggle} />
+      <Modal isOpen={isModalOpen} onClose={handleModalToggle} />
 
       <div className="mt-6 text-center text-white">
         <p>راهنمایی‌ها:</p>

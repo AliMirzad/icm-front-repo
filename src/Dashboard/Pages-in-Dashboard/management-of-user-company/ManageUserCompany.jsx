@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Modal from "./Modal-For-Add-User/Modal";
-import UserDetailModal from "./User-Detail-Modal/UserDetailModal";
-import EditUserModal from "./Edit-Modal/EditUserModal";
-import AddUserCompany from "../../../Api/addUserCompany";
+import ModalAddUser from "./Modal/ModalAddUser";
+import UserDetailModal from "./Modal/UserDetailModal";
+import EditUserModal from "./Modal/EditUserModal";
+import AddUserCompany from "../../../Api/addUserComoany";
 import getUserCompany from "../../../Api/getDataUserCompany";
 import { FaUserPlus } from "react-icons/fa6";
 
@@ -177,7 +177,7 @@ export const ManageUserCompany = () => {
         </div>
       </div>
       {isModalOpen && (
-        <Modal
+        <ModalAddUser
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           onAddUser={handleAddUser}
