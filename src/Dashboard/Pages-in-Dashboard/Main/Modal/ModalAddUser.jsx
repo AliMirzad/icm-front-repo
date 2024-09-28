@@ -7,7 +7,7 @@ const Modal = ({ isOpen, onClose, onAddUser, newUser, setNewUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddUser();
-    onClose(); 
+    onClose();
   };
 
   const handleFileChange = (e) => {
@@ -36,9 +36,9 @@ const Modal = ({ isOpen, onClose, onAddUser, newUser, setNewUser }) => {
               <input
                 type="text"
                 placeholder=" "
-                value={newUser.fname}
+                value={newUser.firstName || ""}
                 onChange={(e) =>
-                  setNewUser({ ...newUser, fname: e.target.value })
+                  setNewUser({ ...newUser, firstName: e.target.value })
                 }
                 className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
               />
@@ -50,27 +50,41 @@ const Modal = ({ isOpen, onClose, onAddUser, newUser, setNewUser }) => {
               <input
                 type="text"
                 placeholder=" "
-                value={newUser.lname}
+                value={newUser.lastName}
                 onChange={(e) =>
-                  setNewUser({ ...newUser, lname: e.target.value })
+                  setNewUser({ ...newUser, lastName: e.target.value })
                 }
                 className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
               />
             </div>
           </div>
-
-          <div className="flex flex-col">
-            <label className="text-gray-600 font-bold">انتخاب نقش :</label>
-            <select
-              value={newUser.role}
-              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+          <div className="relative flex flex-col">
+            <label className="absolute font-bold right-3 -top-3 text-gray-600 transition-all duration-300 bg-white px-1">
+              نام کاربری
+            </label>
+            <input
+              type="text"
+              placeholder=" "
+              value={newUser.username}
+              onChange={(e) =>
+                setNewUser({ ...newUser, username: e.target.value })
+              }
               className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
-            >
-              <option value="">Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Editor">Editor</option>
-              <option value="User">User</option>
-            </select>
+            />
+            <div className="relative flex flex-col">
+              <label className="absolute font-bold right-3 -top-3 text-gray-600 transition-all duration-300 bg-white px-1">
+                رمز عبور
+              </label>
+              <input
+                type="password"
+                placeholder=" "
+                value={newUser.password}
+                onChange={(e) =>
+                  setNewUser({ ...newUser, password: e.target.value })
+                }
+                className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -105,23 +119,19 @@ const Modal = ({ isOpen, onClose, onAddUser, newUser, setNewUser }) => {
             </div>
           </div>
 
-          {/* Address */}
           <div className="relative flex flex-col">
             <label className="absolute font-bold right-3 -top-3 text-gray-600 transition-all duration-300 bg-white px-1">
-              آدرس
+              مرا به خاطر بسپار
             </label>
             <input
-              type="text"
-              placeholder=" "
-              value={newUser.address}
+              type="checkbox"
+              checked={newUser.rememberMe}
               onChange={(e) =>
-                setNewUser({ ...newUser, address: e.target.value })
+                setNewUser({ ...newUser, rememberMe: e.target.checked })
               }
               className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
             />
           </div>
-
-          {/* File Input */}
 
           <div className="flex justify-end gap-3 mt-6">
             <button

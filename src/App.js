@@ -1,11 +1,13 @@
 import './App.css';
+import { AuthProvider } from './layout/AuthContext';
 import RouterMain from './layout/RouterMain';
 
 function App() {
   return (
-    <div className='w-full h-[500px]'>
+   <AuthProvider>
+
       <RouterMain/>
-      </div>
+      </AuthProvider>
   );
 }
 

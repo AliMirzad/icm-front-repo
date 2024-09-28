@@ -1,11 +1,12 @@
-import React from "react";
-
-const AddUser = async (newUser) => {
+const addIcmUser = async (newUser) => {
   try {
-    const response = await fetch("http://localhost:3000/usericm", {
+    const accessToken = localStorage.getItem("accessToken");
+
+    const response = await fetch("http://5.34.207.195:8080/icm/user/v1/registerIcmUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`,
       },
       body: JSON.stringify(newUser),
     });
@@ -15,10 +16,10 @@ const AddUser = async (newUser) => {
     }
 
     const data = await response.json();
-    return data; // Return the response data if needed
+    return data; 
   } catch (error) {
     console.error("Error adding user:", error);
   }
 };
 
-export default AddUser;
+export default addIcmUser;

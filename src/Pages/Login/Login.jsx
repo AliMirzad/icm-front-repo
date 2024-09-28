@@ -1,61 +1,95 @@
-import React, { useState } from "react";
-import { loginUser } from "../../Api/apiLogin";
+import { useState } from "react";
+import Input from "../../component/input/Input";
+import * as style from './StyleCss'
+import { loginUser } from "../../Api/loginUser";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-const navigate =useNavigate()
-// navigate("/dashboard/main")
+  const navigate = useNavigate();
+  const [submit, setSubmit] = useState(false);
+  const [error, setError] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    const formData = new FormData(e.target);
+    let data = Object.fromEntries(formData);  
+    
 
     try {
-      const user = await loginUser(username, password);
-
-      if (user.role.toLowerCase() === "admin") {
-        navigate('/dashboard')
-
-      } else {
-        setError("You do not have admin access.");
-      }
-    } catch (error) {
-      setError(error.message);
+      await loginUser(data.username, data.password); 
+      setError(null);  
+      navigate("/dashboard/main");  
+    } catch (err) {
+      setError(err.message); 
+      setSubmit(false);  
     }
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
-        <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        <form onSubmit={handleSubmit} className="flex flex-col">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
-          >
-            Login
-          </button>
-        </form>
-      </div>
+    <div className={style.formContainer}>
+      <form className={style.form} onSubmit={handleSubmit}>
+        <h2 className={style.title}>ورود</h2>
+
+        <Input
+          labelText="نام کاربری"
+          id="userNameSignIn"
+          inp={{
+            placeholder: "نام کاربری",
+            type: "text",
+            maxLength: 50,
+            name: "username",
+          }}
+          className={style.input}
+          inputWraper={style.inputContainer}
+        />
+
+        <Input
+          labelText=" رمز عبور"
+          id="passwordSignIn"
+          inp={{
+            placeholder: " رمز عبور",
+            type: "password",
+            name: "password",
+          }}
+          className={style.input}
+          inputWraper={style.inputContainer}
+        />
+
+        <Input
+          inp={{
+            type: "checkbox",
+            name: "rememberMe",
+          }}
+          labelText="مرا به‌خاطر بسپار"
+          inputWraper={style.inputContainer + style.checkboxMobilewraper}
+          className={style.checkboxMobile}
+        />
+
+        {error && !submit && (
+          <p className="text-rose-600 text-[14px] text-start w-[90%]">
+            {error}
+          </p>
+        )}
+
+        <button
+          className={
+            !submit ? style.btnClass : style.btnClass + style.disableBtn
+          }
+          type="submit"
+          disabled={submit}  
+        >
+          {submit ? (
+            <>
+              در حال بارگذاری
+              <span className="loading loading-spinner loading-sm"></span>
+            </>
+          ) : (
+            "ثبت"
+          )}
+        </button>
+      </form>
     </div>
   );
 };
+
+export default Login;

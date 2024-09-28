@@ -12,13 +12,13 @@ export const ProfileUser = () => {
             <h2 className="text-xl font-semibold">Hosein Gholami</h2>
             <p>Front-End Developer</p>
           </div>
-          <div>
+          {/* <div>
             <img
               src={hos}
               alt="User Avatar"
               className="rounded-full w-[200px] "
             />
-          </div>
+          </div> */}
         </div>
         {/* three line */}
 

@@ -8,18 +8,10 @@ const ModalEdit = ({ isOpen, onClose, onUpdateUser, user, setUser }) => {
     setUser({ ...user, [name]: value });
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const fileURL = URL.createObjectURL(file);
-      setUser({ ...user, image: fileURL }); 
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateUser(); 
-    onClose(); 
+    onUpdateUser();
+    onClose();
   };
 
   return (
@@ -29,13 +21,6 @@ const ModalEdit = ({ isOpen, onClose, onUpdateUser, user, setUser }) => {
           <h4 className="text-xl pb-2  font-semibold text-blue-400 mb-6 border-b border-gray-400">
             ویرایش اطلاعات
           </h4>
-          {user.image && (
-            <img
-              src={user.image}
-              alt="User"
-              className="w-24 h-24 object-cover rounded-full "
-            />
-          )}
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
@@ -47,9 +32,9 @@ const ModalEdit = ({ isOpen, onClose, onUpdateUser, user, setUser }) => {
               </label>
               <input
                 type="text"
-                name="fname"
-                placeholder="First Name"
-                value={user.fname}
+                name="firstName"
+                placeholder={user.firstName}
+                value={user.firstName}
                 onChange={handleChange}
                 className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
               />
@@ -60,31 +45,40 @@ const ModalEdit = ({ isOpen, onClose, onUpdateUser, user, setUser }) => {
               </label>
               <input
                 type="text"
-                name="lname"
-                placeholder="Last Name"
-                value={user.lname}
+                name="lastName"
+                placeholder={user.lastName}
+                value={user.lastName}
                 onChange={handleChange}
                 className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
               />
             </div>
           </div>
-          {/* edit */}
-          <div className="flex flex-col">
-            <label className="text-gray-600 font-bold">انتخاب نقش :</label>
-            <select
-              name="role"
-              value={user.role}
+          <div className="relative flex flex-col">
+            <label className="absolute font-bold right-3 -top-3 text-gray-600 transition-all duration-300 bg-white px-1">
+              نام کاربری
+            </label>
+            <input
+              type="text"
+              name="username"
+              placeholder=" "
+              value={user.username}
               onChange={handleChange}
               className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
-            >
-              <option value="">Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Editor">Editor</option>
-              <option value="User">User</option>
-            </select>
+            />
+            <div className="relative flex flex-col">
+              <label className="absolute font-bold right-3 -top-3 text-gray-600 transition-all duration-300 bg-white px-1">
+                رمز عبور
+              </label>
+              <input
+                type="password"
+                name="password"
+                placeholder=""
+                value={user.password}
+                onChange={handleChange}
+                className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
+              />
+            </div>
           </div>
-
-          {/* Role, Email, and Phone side by side */}
 
           <div className="grid grid-cols-2 gap-4">
             <div className="relative flex flex-col">
@@ -94,7 +88,7 @@ const ModalEdit = ({ isOpen, onClose, onUpdateUser, user, setUser }) => {
               <input
                 type="number"
                 name="phone"
-                placeholder="Phone"
+                placeholder={user.phone}
                 value={user.phone}
                 onChange={handleChange}
                 className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
@@ -108,46 +102,13 @@ const ModalEdit = ({ isOpen, onClose, onUpdateUser, user, setUser }) => {
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder={user.email}
                 value={user.email}
                 onChange={handleChange}
                 className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
               />
             </div>
           </div>
-
-          {/* Address */}
-          <div className="relative flex flex-col">
-            <label className="absolute font-bold right-3 -top-3 text-gray-600 transition-all duration-300 bg-white px-1">
-              آدرس
-            </label>
-            <input
-              type="text"
-              name="address"
-              placeholder="Address"
-              value={user.address}
-              onChange={handleChange}
-              className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
-            />
-          </div>
-          {/* addres */}
-          <div className="flex flex-col">
-            <label className="text-gray-600 font-bold">انتخاب تصویر :</label>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm transition duration-300 hover:shadow-md"
-            />
-            {/* {user.image && (
-              <img
-                src={user.image}
-                alt="User"
-                className="w-32 h-32 object-cover rounded mt-4 mx-auto"
-              />
-            )} */}
-          </div>
-
-          {/* Image Upload */}
 
           <div className="flex justify-end gap-3 mt-6">
             <button

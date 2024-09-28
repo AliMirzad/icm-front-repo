@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
-import fetchData from "../../../Api/getDataUserIcm";
-import AddUser from "../../../Api/addUser";
-import updateUser from "../../../Api/updateUser";
+import addIcmUser from "../../../Api/addIcmUser";
+import updateIcmUser from "../../../Api/updateIcmUser";
 import Modal from "./Modal/ModalAddUser";
 import ModalInfo from "./Modal/ModalInfo";
 import ModalEdit from "./Modal/ModalEdit";
-import { FaUserPlus } from "react-icons/fa6";
-import { FcNext } from "react-icons/fc";
-import { FcPrevious } from "react-icons/fc";
+import { FaUserPlus,FaTrash } from "react-icons/fa6";
+import { FcNext, FcPrevious } from "react-icons/fc";
 import { FaEye } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
-
+import getAllIcmUser from "../../../Api/getAllIcmUser";
+import Table from "../../../component/table/Table";
+import deleteIcmUser from "../../../Api/deleteIcmUser";
+import ModalDelete from "./Modal/ModalDelete";
 export const Main = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [newUser, setNewUser] = useState({
-    fname: "",
-    lname: "",
-    userName: "",
-    email: "",
+    username: "",
+    firstName: "",
+    lastName: "",
     phone: "",
-    address: "",
-    role: "",
-    image: "",
+    email: "",
+    password: "",
+    rememberMe: false,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
@@ -30,10 +30,11 @@ export const Main = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(3);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);  // State for delete modal
 
   useEffect(() => {
     const getData = async () => {
-      const result = await fetchData();
+      const result = await getAllIcmUser();
       setData(result);
     };
 
@@ -45,17 +46,14 @@ export const Main = () => {
   };
 
   const handleAddUser = async () => {
-    const addedUser = await AddUser(newUser);
+    const addedUser = await addIcmUser(newUser);
     setData([...data, addedUser]);
     setNewUser({
-      fname: "",
-      lname: "",
       userName: "",
-      email: "",
+      firstName: "",
+      lastName: "",
       phone: "",
-      address: "",
-      role: "",
-      image: "",
+      email: "",
     });
   };
 
@@ -67,14 +65,23 @@ export const Main = () => {
     }
   };
 
-  const handleUpdateUser = async () => {
-    if (selectedUser) {
-      const updatedUser = await updateUser(selectedUser);
-      setData(
-        data.map((user) => (user.id === updatedUser.id ? updatedUser : user))
-      );
+  const handleUpdateUser = async (updatedUser) => {
+    if (selectedUser && selectedUser.id) {
+      console.log('Updating user with:', { ...updatedUser, id: selectedUser.id });
+      try {
+        const response = await updateIcmUser({
+          ...updatedUser,
+          id: selectedUser.id,
+        });
+        setData(data.map((user) => (user.id === response.id ? response : user)));
+      } catch (error) {
+        console.error('Failed to update user:', error);
+      }
+    } else {
+      console.error("Selected user is not valid:", selectedUser);
     }
   };
+  
 
   const handleShowUser = (user) => {
     setSelectedUser(user);
@@ -88,16 +95,71 @@ export const Main = () => {
 
   const filteredData = data.filter(
     (user) =>
-      (user.fname &&
-        user.fname.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (user.lname &&
-        user.lname.toLowerCase().includes(searchTerm.toLowerCase()))
+      (user?.firstName &&
+        user?.firstName.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (user?.lastName &&
+        user?.lastName.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredData.slice(indexOfFirstUser, indexOfLastUser);
   const totalPages = Math.ceil(filteredData.length / usersPerPage);
+  console.log({ data });
+
+  const handleDeleteUser = async () => {
+    if (selectedUser && selectedUser.id) {
+      try {
+        await deleteIcmUser(selectedUser.id);
+        setData(data.filter((user) => user.id !== selectedUser.id));  // Remove deleted user from the list
+        setIsDeleteModalOpen(false);  // Close the modal after deletion
+      } catch (error) {
+        console.error('Failed to delete user:', error);
+      }
+    }
+  };
+
+  const handleDeleteClick = (user) => {
+    setSelectedUser(user);
+    setIsDeleteModalOpen(true);  // Open the delete confirmation modal
+  };
+  const headerMappings = {
+    username: "Username",
+    firstName: "First Name",
+    lastName: "Last Name",
+    phone: "Phone Number",
+    actions: "Actions",
+  };
+  const headers = ["username", "firstName", "lastName", "phone", "actions"];
+
+  const tableData = filteredData.map((user) => ({
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    phone: user.phone,
+    actions: (
+      <div className="">
+        <button
+          onClick={() => handleShowUser(user)}
+          className="bg-green-500 text-white px-2 py-1 rounded ml-2"
+        >
+          <FaEye />
+        </button>
+        <button
+          onClick={() => handleEditUser(user)}
+          className="bg-blue-400 text-white px-2 py-1 rounded ml-2 "
+        >
+          <CiEdit className="bg-blue-400" />
+        </button>
+        <button
+          onClick={() => handleDeleteClick(user)}  
+          className="bg-red-500 text-white px-2 py-1 rounded"
+        >
+          <FaTrash />
+        </button>
+      </div>
+    ),
+  }));
 
   return (
     <div className="flex flex-col justify-center w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto p-4">
@@ -117,51 +179,12 @@ export const Main = () => {
           <FaUserPlus />
         </button>
       </div>
-      <table className="min-w-full bg-white -gray-200">
-        <thead>
-          <tr>
-            <th className="px-4 py-2">First Name</th>
-            <th className="px-4 py-2">Last Name</th>
-            <th className="px-4 py-2">Image</th>
-            <th className="px-4 py-2">Role</th>
-            <th className="px-4 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentUsers.map((user) => (
-            <tr key={user.id} className="text-center">
-              <td className="px-4 py-2">{user.fname}</td>
-              <td className="px-4 py-2">{user.lname}</td>
-              <td className="py-2 text-center">
-                {user.image ? (
-                  <img
-                    src={user.image}
-                    alt={`${user.fname} ${user.lname}`}
-                    className="block mx-auto w-16 h-16 object-cover rounded"
-                  />
-                ) : (
-                  <div className="w-10 h-10 bg-gray-300 rounded mx-auto"></div>
-                )}
-              </td>
-              <td className="px-4 py-2">{user.role}</td>
-              <td className="px-4 py-2">
-                <button
-                  onClick={() => handleShowUser(user)}
-                  className="bg-green-500 text-white px-2 py-1 rounded ml-2"
-                >
-                  <FaEye />
-                </button>
-                <button
-                  onClick={() => handleEditUser(user)}
-                  className="bg-blue-400 text-white px-2 py-1 rounded"
-                >
-                  <CiEdit className="bg-blue-400" />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
+      <Table
+        headers={headers}
+        data={tableData}
+        headerMappings={headerMappings}
+      />
 
       <div className="flex justify-between mt-4 w-4/5 items-center">
         <button
@@ -205,6 +228,11 @@ export const Main = () => {
         onUpdateUser={handleUpdateUser}
         user={selectedUser}
         setUser={setSelectedUser}
+      />
+        <ModalDelete
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onDelete={handleDeleteUser}
       />
     </div>
   );

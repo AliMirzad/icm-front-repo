@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import "./sidebar.css";
-import './sidebar.css'
+import "./sidebar.css";
 import { Logo } from "../Logo/Logo";
 import { SidebarData } from "./data-in-sidebar/SidebarData";
 import { UilBars } from "@iconscout/react-unicons";
@@ -23,7 +22,7 @@ const Sidebar = () => {
   };
   console.log(window.innerWidth);
   return (
-    <div className="w-[250px] bg-white mr-4 my-4 rounded-3xl ">
+    <div className="w-full h-full  bg-[#202531] text-white ">
       <div
         className="bars"
         style={expanded ? { left: "50%" } : { left: "5%" }}
@@ -41,7 +40,7 @@ const Sidebar = () => {
           className="logo flex flex-col justify-center items-center mx-[10px] "
           style={{ margin: "0 20px" }}
         >
-          <IoPersonCircle size={100} className="text-blue-500" />
+          <IoPersonCircle size={60} className="text-white" />
           {/* <UilBars size={100} className="text-blue-500" /> */}
           <h1>hosein</h1>
         </div>
@@ -61,7 +60,7 @@ const Sidebar = () => {
             );
           })}
           {/* signoutIcon */}
-          <div className=" cursor-pointer flex items-center gap-4">
+          <div className=" cursor-pointer flex items-center gap-4 mt-6 mr-3">
             <UilSignOutAlt />
             خروج
           </div>

@@ -11,8 +11,8 @@ export const Dashboard = () => {
           <Sidebar />
         </div>
         <div className="flex flex-col w-3/4 mx-auto ">
-          <div className="flex justify-between">
-            <Header />
+          <div className="flex justify-end bg-black w-full">
+            {/* <Header /> */}
             <Logo />
           </div>
           <Outlet />

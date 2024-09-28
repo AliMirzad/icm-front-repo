@@ -17,15 +17,16 @@ import {
   
   // Sidebar Data
   export const SidebarData = [
-    {
-      icon: UilEstate,
-      heading: "خانه",
-      link: "/dashboard/main",
-    },
+  
     {
       icon: UilClipboardAlt,
       heading: "پروفایل",
       link: "/dashboard/profile",
+    },
+    {
+      icon: UilEstate,
+      heading: "مدیریت کاربران",
+      link: "/dashboard/main",
     },
     {
       icon: UilUsersAlt,

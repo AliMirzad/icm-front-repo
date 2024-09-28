@@ -90,7 +90,7 @@ export const ManageUserCompany = () => {
 
   return (
     <div className="flex justify-center w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">
-      <div className="p-6 w-4/5">
+      {/* <div className="p-6 w-4/5">
         <h1 className="text-2xl font-bold mb-4">مدیریت کارمندان شرکت</h1>
         <div className="flex justify-between mb-4 w-full">
           <div className="flex space-x-2 w-full justify-between">
@@ -199,7 +199,9 @@ export const ManageUserCompany = () => {
           user={currentEditUser}
           onUpdateUser={handleUpdateUser}
         />
-      )}
-    </div>
+      )} */}
+      
+        <h1>... coming soon </h1>
+   </div>
   );
 };
