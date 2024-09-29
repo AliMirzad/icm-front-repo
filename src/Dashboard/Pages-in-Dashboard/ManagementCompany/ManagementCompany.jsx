@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import getDataCompany from "../../../Api/getDataCompany";
 import Modal from "./Modal/Modal";
 import updateStatus from "../../../Api/siteRequest";
+import Table from '../../../component/table/Table'
+
 export const ManagementCompany = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
@@ -17,30 +19,23 @@ export const ManagementCompany = () => {
       console.log("Fetched data:", result); 
       setData(result);
     };
-  
     getData();
   }, []);
-  console.log(data);
-
 
   const handleConfirmStatus = async (companyId) => {
     try {
-      // به‌روزرسانی وضعیت در سرور
       await updateStatus(companyId, 1);
-      
-      // به روزرسانی وضعیت در حالت محلی
       const updatedData = data.map((company) =>
         company.id === companyId ? { ...company, status: 1 } : company
       );
       setData(updatedData);
-  
+
       const result = await getDataCompany();
       setData(result);
     } catch (error) {
       console.error("Error updating status:", error);
     }
   };
-  
 
   const filteredCompanies = Array.isArray(data)
     ? data.filter(
@@ -60,6 +55,8 @@ export const ManagementCompany = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const headers = ["name", "boss", "email", "address", "status", "actions"]; // تعریف هدینگ‌ها
+
   return (
     <div className="flex justify-center w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">
       <div className="p-6">
@@ -71,42 +68,9 @@ export const ManagementCompany = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <table className="min-w-full bg-white border border-gray-300 rounded-md shadow-lg text-center">
-          <thead className="bg-gray-200">
-            <tr className="text-center">
-              <th className="py-3 px-4 border-b text-center">Company Name</th>
-              <th className="py-3 px-4 border-b text-center">Boss Name</th>
-              <th className="py-3 px-4 border-b text-center">Email</th>
-              <th className="py-3 px-4 border-b text-center">Address</th>
-              <th className="py-3 px-4 border-b text-center">Status</th>
-              <th className="py-3 px-4 border-b text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentCompanies.map((company) => (
-              <tr key={company.id} className="hover:bg-gray-100">
-                <td className="py-3 px-4 border-b">{company.name}</td>
-                <td className="py-3 px-4 border-b">{company.boss}</td>
-                <td className="py-3 px-4 border-b">{company.email}</td>
-                <td className="py-3 px-4 border-b">{company.address}</td>
-                <td className="py-3 px-4 border-b">
-                  {company.status === 0 ? "Pending" : "Confirmed"}
-                </td>
-                <td className="py-3 px-4 border-b">
-                  <button
-                    onClick={() => {
-                      setSelectedCompany(company);
-                      setIsModalOpen(true);
-                    }}
-                    className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-                  >
-                    View
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+        <Table headers={headers} data={currentCompanies} />
+
         <div className="flex justify-center mt-4">
           {Array.from(
             { length: Math.ceil(filteredCompanies.length / companiesPerPage) },
@@ -125,20 +89,21 @@ export const ManagementCompany = () => {
             )
           )}
         </div>
+
         <Modal
-  isOpen={isModalOpen}
-  onClose={() => setIsModalOpen(false)}
-  company={selectedCompany}
-  onConfirm={() => {
-    handleConfirmStatus(selectedCompany.id);
-    setIsModalOpen(false);
-    const result = async () => {
-      const data = await getDataCompany();
-      setData(data);
-    };
-    result();
-  }}
-/>
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          company={selectedCompany}
+          onConfirm={() => {
+            handleConfirmStatus(selectedCompany.id);
+            setIsModalOpen(false);
+            const result = async () => {
+              const data = await getDataCompany();
+              setData(data);
+            };
+            result();
+          }}
+        />
       </div>
     </div>
   );

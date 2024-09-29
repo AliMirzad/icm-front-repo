@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./modal-for-create-site/Modal";
+import ComingSoon from "../../../component/comming-soon/ComingSoon";
 export const CreateSite = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [siteInfo, setSiteInfo] = useState({
@@ -19,8 +20,8 @@ export const CreateSite = () => {
   };
 
   return (
-    <div className="flex  justify-center  w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">
-      <div className="p-6">
+    <div className="">
+      {/* <div className="p-6">
         <h1 className="text-2xl font-bold mb-4">Create Site Page</h1>
         <p className="mb-4">
           لطفاً اطلاعات سایت خود را وارد کنید. برای ثبت درخواست، روی دکمه زیر
@@ -40,7 +41,8 @@ export const CreateSite = () => {
           siteInfo={siteInfo}
           onInputChange={handleInputChange}
         />
-      </div>
+      </div> */}
+      <ComingSoon/>
     </div>
   );
 };

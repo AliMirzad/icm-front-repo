@@ -5,6 +5,7 @@ import EditUserModal from "./Modal/EditUserModal";
 import AddUserCompany from "../../../Api/addUserComoany";
 import getUserCompany from "../../../Api/getDataUserCompany";
 import { FaUserPlus } from "react-icons/fa6";
+import ComingSoon from "../../../component/comming-soon/ComingSoon";
 
 export const ManageUserCompany = () => {
   const [data, setData] = useState([]);
@@ -200,8 +201,7 @@ export const ManageUserCompany = () => {
           onUpdateUser={handleUpdateUser}
         />
       )} */}
-      
-        <h1>... coming soon </h1>
+    <ComingSoon/>      
    </div>
   );
 };

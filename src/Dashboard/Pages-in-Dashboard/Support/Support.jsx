@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal/Modal";
 import pic from "../../../images/hosein.jpg";
+import ComingSoon from "../../../component/comming-soon/ComingSoon";
 export const Support = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -9,8 +10,8 @@ export const Support = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full  h-4/5 rounded-3xl bg-gradient-to-r from-blue-400 to-purple-600 p-6 mt-3 mx-auto">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg text-center relative">
+    <div className="">
+      {/* <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg text-center relative">
         <img
           src={pic}
           alt="پشتیبان"
@@ -39,7 +40,8 @@ export const Support = () => {
           <li>سوالات خود را به طور واضح بیان کنید.</li>
           <li>توجه داشته باشید که پاسخ‌ها ممکن است کمی زمان‌بر باشند.</li>
         </ul>
+      </div> */}
+        <ComingSoon/>
       </div>
-    </div>
   );
 };

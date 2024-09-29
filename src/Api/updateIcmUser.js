@@ -1,7 +1,7 @@
 const updateIcmUser = async (user) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
-    const response = await fetch(`http://5.34.207.195:8080/icm/user/v1/updateIcmUser/${user.id}`, {
+    const response = await fetch(`http://5.34.207.195:8080/icm/user/v1/updateIcmUser`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

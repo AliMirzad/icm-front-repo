@@ -14,12 +14,13 @@
 .boxx {
   width: 100%;
   color: var(--black);
-  background: linear-gradient(
+  /* background: linear-gradient(
     106.37deg,
     #b3e0ff 29.63%,
     #80c1ff 51.55%,
     #4da3ff 90.85%
-  );
+  ); */
+  background: #2247a5cc;
   height: 100vh;
   backdrop-filter: blur(6.7px);
   display: flex;

@@ -7,10 +7,10 @@ const ModalEdit = ({ isOpen, onClose, onUpdateUser, user, setUser }) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateUser();
+    onUpdateUser(user); // تمام اطلاعات کاربر ارسال می‌شود
     onClose();
   };
 

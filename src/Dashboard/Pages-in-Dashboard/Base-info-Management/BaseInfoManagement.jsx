@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Table from "../../../component/table/Table";
+import { FaUserPlus } from "react-icons/fa6";
+
 const usersData = [
   {
     id: 1,
@@ -71,8 +74,10 @@ export const BaseInfoManagement = () => {
     }
   };
 
+  const headers = ["name", "email", "phone", "position"]; // Define the headers you want to display
+
   return (
-    <div className="flex  justify-center  w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">
+    <div className="flex justify-center w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">
       <div className="p-6 w-4/5">
         <h1 className="text-2xl font-bold mb-4">Manage User Company Page</h1>
         <div className="flex justify-between mb-4 w-full">
@@ -84,33 +89,15 @@ export const BaseInfoManagement = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <button className="bg-blue-500 text-white rounded-md p-2">
-              Add User
-            </button>
+           <button
+          className="mb-4 p-2 bg-blue-500 text-white rounded-3xl"
+        >
+          <FaUserPlus />
+        </button>
           </div>
         </div>
-        <table className="min-w-full bg-white border border-gray-300 rounded-md shadow-lg">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="py-3 px-4 border-b text-center">User Name</th>
-              <th className="py-3 px-4 border-b text-center">Email</th>
-              <th className="py-3 px-4 border-b text-center">Phone</th>
-              <th className="py-3 px-4 border-b text-center">Position</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentUsers.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-100">
-                <td className="py-3 px-4 border-b text-center">{user.name}</td>
-                <td className="py-3 px-4 border-b text-center">{user.email}</td>
-                <td className="py-3 px-4 border-b text-center">{user.phone}</td>
-                <td className="py-3 px-4 border-b text-center">
-                  {user.position}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table headers={headers} data={currentUsers} />{" "}
+        {/* Use your general table component */}
         <div className="flex justify-between mt-4">
           <button
             onClick={handleNextPage}

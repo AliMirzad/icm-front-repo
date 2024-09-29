@@ -22,7 +22,7 @@ const Sidebar = () => {
   };
   console.log(window.innerWidth);
   return (
-    <div className="w-full h-full  bg-[#202531] text-white ">
+    <div className="w-full h-full  bg-[#1c336b] text-white ">
       <div
         className="bars"
         style={expanded ? { left: "50%" } : { left: "5%" }}
@@ -36,13 +36,8 @@ const Sidebar = () => {
         animate={window.innerWidth <= 768 ? `${expanded}` : ""}
       >
         {/* logo */}
-        <div
-          className="logo flex flex-col justify-center items-center mx-[10px] "
-          style={{ margin: "0 20px" }}
-        >
-          <IoPersonCircle size={60} className="text-white" />
-          {/* <UilBars size={100} className="text-blue-500" /> */}
-          <h1>hosein</h1>
+        <div className=" w-full flex justify-center items-center mr-8 ">
+          <Logo />
         </div>
 
         <div className="menu">

@@ -1,7 +1,7 @@
 import logo from "../../../images/logo-team/Technix-opengraph.png";
 export const Logo = () => {
   return (
-    <div className="w-[200px] h-[70px] ml-4 mt-3">
+    <div className="w-[140px] h-[60px] ">
       <img
         src={logo}
         alt=""

@@ -8,6 +8,12 @@ const Table = ({ headers, data }) => {
     lastName: "نام خانوادگی",
     phone: "تلفن",
     actions: "اقدامات",
+    email:"ایمیل",
+    position:"موقعیت شغلی",
+    name:"نام و نام خانوادگی",
+    address :"آدرس",
+    boss:"رییس شرکت",
+    status:"وضعیت"
   };
 
   return (

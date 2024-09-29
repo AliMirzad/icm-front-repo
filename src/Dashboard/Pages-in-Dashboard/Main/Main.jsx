@@ -67,11 +67,11 @@ export const Main = () => {
 
   const handleUpdateUser = async (updatedUser) => {
     if (selectedUser && selectedUser.id) {
-      console.log('Updating user with:', { ...updatedUser, id: selectedUser.id });
       try {
         const response = await updateIcmUser({
-          ...updatedUser,
-          id: selectedUser.id,
+          ...selectedUser,  
+          ...updatedUser,  
+          id: selectedUser.id,  
         });
         setData(data.map((user) => (user.id === response.id ? response : user)));
       } catch (error) {
@@ -111,8 +111,8 @@ export const Main = () => {
     if (selectedUser && selectedUser.id) {
       try {
         await deleteIcmUser(selectedUser.id);
-        setData(data.filter((user) => user.id !== selectedUser.id));  // Remove deleted user from the list
-        setIsDeleteModalOpen(false);  // Close the modal after deletion
+        setData(data.filter((user) => user.id !== selectedUser.id));
+        setIsDeleteModalOpen(false);  
       } catch (error) {
         console.error('Failed to delete user:', error);
       }
@@ -121,7 +121,7 @@ export const Main = () => {
 
   const handleDeleteClick = (user) => {
     setSelectedUser(user);
-    setIsDeleteModalOpen(true);  // Open the delete confirmation modal
+    setIsDeleteModalOpen(true); 
   };
   const headerMappings = {
     username: "Username",
