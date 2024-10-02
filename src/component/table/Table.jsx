@@ -13,7 +13,9 @@ const Table = ({ headers, data }) => {
     name:"نام و نام خانوادگی",
     address :"آدرس",
     boss:"رییس شرکت",
-    status:"وضعیت"
+    status:"وضعیت",
+    title:"عنوان",
+    id:"شناسه"
   };
 
   return (

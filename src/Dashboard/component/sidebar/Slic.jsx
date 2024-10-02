@@ -45,12 +45,12 @@ const Slic = () => {
               onClick={() => setActiveIndex(index)}
             >
               <li
-                className={` flex rounded-md   cursor-pointer  text-gray-100 text-sm  items-start gap-x-3 
+                className={` flex rounded-md   cursor-pointer  text-gray-100 text-sm  items-center gap-x-3 
                 ${item.gap ? "mt-9" : "mt-2"} ${
                   activeIndex === index ? "active" : ""
                 }`}
               >
-                <item.icon className="text-black " />
+                <item.icon  />
                 <span
                   className={`${!open && "hidden"} origin-left duration-200`}
                 >

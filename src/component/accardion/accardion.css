@@ -1,0 +1,14 @@
+.accordion-header {
+    background-color: #e0f7fa; /* رنگ پس‌زمینه */
+    padding: 12px; /* فاصله */
+    border-radius: 5px; /* انحنای گوشه‌ها */
+  }
+  
+  .accordion-button {
+    transition: background-color 0.3s ease;
+  }
+  
+  .accordion-button:hover {
+    background-color: #4dd0e1; /* رنگ پس‌زمینه در حالت hover */
+  }
+  

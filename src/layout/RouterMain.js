@@ -7,6 +7,7 @@ import { Main } from "../Dashboard/Pages-in-Dashboard/Main/Main";
 import { ProfileUser } from "../Dashboard/Pages-in-Dashboard/profileUser/ProfileUser";
 import { ManagementCompany } from "../Dashboard/Pages-in-Dashboard/ManagementCompany/ManagementCompany";
 import { CreateSite } from "../Dashboard/Pages-in-Dashboard/createSite/CreateSite";
+
 import { BaseInfoManagement } from "../Dashboard/Pages-in-Dashboard/Base-info-Management/BaseInfoManagement";
 import { Support } from "../Dashboard/Pages-in-Dashboard/Support/Support";
 import { ManageUserCompany } from "../Dashboard/Pages-in-Dashboard/management-of-user-company/ManageUserCompany";
@@ -30,10 +31,11 @@ const RouterMain = () => {
           <Route path="/dashboard/profile" element={<ProfileUser />} />
           <Route path="/dashboard/Management" element={<ManagementCompany />} />
           <Route path="/dashboard/createsite" element={<CreateSite />} />
-          <Route
+          <Route path="/dashboard/infomanagement" element={<BaseInfoManagement />}/>
+          {/* <Route
             path="/dashboard/infomanagement"
             element={<BaseInfoManagement />}
-          />
+          /> */}
           <Route path="/dashboard/support" element={<Support />} />
           <Route
             path="/dashboard/ManageUserCompany"

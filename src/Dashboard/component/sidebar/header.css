@@ -25,7 +25,13 @@
   text-align: right;
   padding: 10px 0px;
 }
+.icon-size {
+  font-size: 24px; /* می‌توانید اندازه مورد نظر خود را انتخاب کنید */
+}
 
+li.active .icon-size {
+  font-size: 44px; /* در حالت اکتیو هم اندازه ثابت بماند */
+}
 .active::before {
   content: "";
   width: 8px;
