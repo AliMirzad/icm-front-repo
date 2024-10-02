@@ -3,29 +3,52 @@
   flex-direction: column;
   position: relative;
   padding-top: 1rem;
-  transition: all 300ms ease;
-}
-/* logo */
-.bars {
-  display: none;
+  transition: width 300ms ease; /* انیمیشن تغییر عرض */
 }
 
-.logo {
+.sidebar-expanded {
+  width: 20%; /* عرض اصلی ساید بار */
+}
+
+.sidebar-collapsed {
+  width: 60px;
+  background: rgb(186, 186, 208); /* عرض ساید بار در حالت جمع شده */
+}
+
+.sidebar-content {
   display: flex;
-  height: 2rem;
-  width: 90%;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  height: 4%;
+  flex-direction: column;
+  transition: all 300ms ease; /* انیمیشن */
 }
 
-.logo > img {
-  width: 100%;
-  height: 2rem;
+/* تنظیمات عرض برای محتوای ساید بار */
+.sidebar-content.expanded {
+  width: 200px; /* عرض ساید بار در حالت باز */
 }
 
-/* menu */
+.sidebar-content.collapsed {
+  width: 60px; /* عرض ساید بار در حالت جمع شده */
+}
+
+.toggle-button {
+  background-color: #167eba;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* برای نمایش یا عدم نمایش عنوان */
+.menuItem > span {
+  display: block;
+}
+
+.collapsed .menuItem > span {
+  display: none; /* مخفی کردن عنوان در حالت جمع شده */
+}
+
 .menu {
   margin-top: 2rem;
   height: 100%;
@@ -35,12 +58,12 @@
   color: whitesmoke;
   gap: 1rem;
 }
+
 .menuItem {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   height: 2.5rem;
-  /* margin-left: 2rem; */
   margin-right: 10px;
   position: relative;
   padding-right: 10px;
@@ -54,32 +77,25 @@
   cursor: pointer;
 }
 
-.menu .menuItem:last-child {
-  position: absolute;
-  bottom: 0.3rem;
-  width: 100%;
-}
-
 .active {
-  /* background: var(--activeItem); */
-  /* background: rgb(111, 224, 244); */
-  /* background:rgba(255, 255, 255, 0.54); */
   background-color: whitesmoke;
   margin-left: 0;
   color: black;
   width: 100%;
 }
+.active-icon {
+  /* تنظیمات برای آیکون فعال */
+  color: black; /* یا هر رنگ دیگری که می‌خواهید */
+}
 .active::before {
   content: "";
   width: 8px;
   height: 100%;
-  /* background: var(--pink); */
-  /* background: rgb(7, 162, 197); */
   background-color: black;
   margin-right: calc(1rem - 8px);
 }
 
-/* Tablets */
+/* Responsive styles */
 @media screen and (max-width: 1200px) {
   .menuItem > span {
     display: none;
@@ -96,19 +112,7 @@
     z-index: 9;
     background: #fff;
     width: 55%;
-    padding-right: 1rem;
     height: 100%;
-  }
-  .menuItem > span {
-    display: block;
-  }
-  .logo {
-    display: flex;
-    width: 200px;
-  }
-  .menu .menuItem:last-child {
-    position: relative;
-    margin-top: 6rem;
   }
   .bars {
     display: flex;
@@ -119,8 +123,5 @@
     padding: 10px;
     border-radius: 10px;
     z-index: 9;
-  }
-  .close {
-    left: -60%;
   }
 }

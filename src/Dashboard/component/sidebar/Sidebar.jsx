@@ -6,56 +6,43 @@ import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
-import { IoPersonCircle } from "react-icons/io5";
 
-const Sidebar = () => {
+const Sidebar = ({ setSidebarExpanded, expanded }) => {
   const [selected, setSelected] = useState(0);
 
-  const [expanded, setExpaned] = useState(true);
-  const sidebarVariants = {
-    true: {
-      left: "0",
-    },
-    false: {
-      left: "-60%",
-    },
+  const toggleSidebar = () => {
+    setSidebarExpanded(!expanded);
   };
-  console.log(window.innerWidth);
+
   return (
-    <div className="w-full h-full  bg-[#1c336b] text-white ">
-      <div
-        className="bars"
-        style={expanded ? { left: "50%" } : { left: "5%" }}
-        onClick={() => setExpaned(!expanded)}
-      >
+    <div className={`sidebar ${expanded ? "sidebar-expanded" : "sidebar-collapsed"} h-full bg-[#202531] text-white`}>
+      <div className="bars" onClick={toggleSidebar}>
         <UilBars />
       </div>
       <motion.div
-        className="sidebar"
-        variants={sidebarVariants}
-        animate={window.innerWidth <= 768 ? `${expanded}` : ""}
+        className={`sidebar-content ${expanded ? "expanded" : "collapsed"}`}
+        animate={expanded ? { width: "200px", opacity: 1 } : { width: "60px", opacity: 0.8 }}
+        transition={{ duration: 0.3 }}
       >
-        {/* logo */}
-        <div className=" w-full flex justify-center items-center mr-8 ">
+  
+
+        <div className={`w-full flex justify-center items-center ${expanded ? "" : "collapsed"}`}>
           <Logo />
         </div>
 
         <div className="menu">
-          {SidebarData.map((item, index) => {
-            return (
-              <Link
-                to={item.link || "#"}
-                className={selected === index ? "menuItem active" : "menuItem"}
-                key={index}
-                onClick={() => setSelected(index)}
-              >
-                <item.icon />
-                <span>{item.heading}</span>
-              </Link>
-            );
-          })}
-          {/* signoutIcon */}
-          <div className=" cursor-pointer flex items-center gap-4 mt-6 mr-3">
+          {SidebarData.map((item, index) => (
+            <Link
+              to={item.link || "#"}
+              className={`menuItem ${selected === index ? "active" : ""}`}
+              key={index}
+              onClick={() => setSelected(index)}
+            >
+              <item.icon />
+              {expanded && <span>{item.heading}</span>}
+            </Link>
+          ))}
+          <div className="cursor-pointer flex items-center gap-4 mt-6 mr-3">
             <UilSignOutAlt />
             خروج
           </div>

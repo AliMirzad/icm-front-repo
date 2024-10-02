@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import addIcmUser from "../../../Api/addIcmUser";
-import updateIcmUser from "../../../Api/updateIcmUser";
+import addIcmUser from "../../../Api/IcmApi/addIcmUser";
+import updateIcmUser from "../../../Api/IcmApi/updateIcmUser";
 import Modal from "./Modal/ModalAddUser";
 import ModalInfo from "./Modal/ModalInfo";
 import ModalEdit from "./Modal/ModalEdit";
@@ -8,9 +8,9 @@ import { FaUserPlus,FaTrash } from "react-icons/fa6";
 import { FcNext, FcPrevious } from "react-icons/fc";
 import { FaEye } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
-import getAllIcmUser from "../../../Api/getAllIcmUser";
+import getAllIcmUser from "../../../Api/IcmApi/getAllIcmUser";
 import Table from "../../../component/table/Table";
-import deleteIcmUser from "../../../Api/deleteIcmUser";
+import deleteIcmUser from "../../../Api/IcmApi/deleteIcmUser";
 import ModalDelete from "./Modal/ModalDelete";
 export const Main = () => {
   const [data, setData] = useState([]);

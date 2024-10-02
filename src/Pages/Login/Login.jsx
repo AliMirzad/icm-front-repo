@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "../../component/input/Input";
-import * as style from './StyleCss'
-import { loginUser } from "../../Api/loginUser";
+import * as style from "./StyleCss";
+import { loginUser } from "../../Api/LoginApi/loginUser";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -12,16 +12,15 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    let data = Object.fromEntries(formData);  
-    
+    let data = Object.fromEntries(formData);
 
     try {
-      await loginUser(data.username, data.password); 
-      setError(null);  
-      navigate("/dashboard/main");  
+      await loginUser(data.username, data.password);
+      setError(null);
+      navigate("/dashboard/main");
     } catch (err) {
-      setError(err.message); 
-      setSubmit(false);  
+      setError(err.message);
+      setSubmit(false);
     }
   };
 
@@ -76,7 +75,7 @@ export const Login = () => {
             !submit ? style.btnClass : style.btnClass + style.disableBtn
           }
           type="submit"
-          disabled={submit}  
+          disabled={submit}
         >
           {submit ? (
             <>

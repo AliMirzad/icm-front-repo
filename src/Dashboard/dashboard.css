@@ -40,6 +40,17 @@
   gap: 16px;
   overflow: hidden;
 }
+.sidebar-expanded {
+  width: 20%; 
+
+}
+
+.sidebar-collapsed {
+  /* width: 60px; */
+  background: #a0d8ef; /* عرض ساید بار در حالت جمع شده */
+}
+
+
 
 .AppGlass .sidebar {
   width: 13rem;
