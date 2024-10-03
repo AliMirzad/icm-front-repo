@@ -4,6 +4,7 @@ import getDataCompany from "../../../Api/getDataCompany";
 import Modal from "./Modal/Modal";
 import updateStatus from "../../../Api/siteRequest";
 import Table from '../../../component/table/Table'
+import ComingSoon from "../../../component/comming-soon/ComingSoon";
 
 export const ManagementCompany = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -59,7 +60,7 @@ export const ManagementCompany = () => {
 
   return (
     <div className="flex justify-center w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">
-      <div className="p-6">
+      {/* <div className="p-6">
         <h1 className="text-2xl font-bold mb-4">Management Company Page</h1>
         <input
           type="text"
@@ -104,7 +105,8 @@ export const ManagementCompany = () => {
             result();
           }}
         />
-      </div>
+      </div> */}
+      <ComingSoon/>
     </div>
   );
 };

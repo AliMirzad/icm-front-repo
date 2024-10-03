@@ -1,9 +1,10 @@
 import { ReactNode, useState } from "react";
-import Icon from "react-icons-kit";
-import { eye } from "react-icons-kit/icomoon/eye";
-import { eyeBlocked } from "react-icons-kit/icomoon/eyeBlocked";
+import { VscEye } from "react-icons/vsc";
+import { VscEyeClosed } from "react-icons/vsc";
+import { CiUser } from "react-icons/ci";
+import { normalBorder } from "../../Pages/Login/StyleCss";
 
-const Input = ({ children, id, labelText, inp, className,inputWraper }) => {
+const Input = ({ id, labelText, inp, className, inputWraper, error }) => {
   const [value, setValue] = useState(inp?.value || "");
   const [type, setType] = useState(inp?.type || "text");
   const [longValue, setLangValue] = useState(false);
@@ -20,54 +21,55 @@ const Input = ({ children, id, labelText, inp, className,inputWraper }) => {
       setLangValue(true);
     }
   }
+  function handleKeyUp(e) {
+    
+    if (e.target.value.length === 50 && e.target.type !== "password") {
+      setLangValue(true);
+    } else {
+      setLangValue(false);
+    }
+  }
   const isLess = value.length < 3 && value.length !== 0;
 
   return (
-    <div className={inputWraper}>
+    <div className={isLess ? inputWraper + error : inputWraper + normalBorder}>
       {type !== "checkbox" ? (
-        <fieldset className={className}>
-          {(type !== "submit") | (type !== "checkbox") && (
-            <legend
-              htmlFor={id}
-              className={
-                type !== "checkbox"
-                  ? "text-slate-600  text-start text-[14px]"
-                  : "bg-white w-[40%] "
-              }
-            >
-              {" "}
-              {labelText}
-            </legend>
-          )}
+        <>
           <input
             id={id}
             {...inp}
             type={type}
             onBlur={(e) => setValue(e.target.value)}
-            className={type==="checkbox"?"border-0 bg-white  outline-none text-[12px]":"border-0 bg-white  outline-none text-[12px] w-[90%] "}
+            className={className}
             onFocus={handleFocus}
+            onKeyUp={handleKeyUp}
           />
-          {inp?.type === "password" && (
-            <Icon
-              className="text-black absolute rounded-lg eye"
-              icon={
-                inp?.type === "password" && type === "password"
-                  ? eye
-                  : eyeBlocked
-              }
-              onClick={chnageIcon}
-            />
+          {inp?.type === "password" ? (
+            <div className=" text-white" onClick={chnageIcon}>
+              {inp?.type === "password" && type === "password" ? (
+                <VscEye />
+              ) : (
+                <VscEyeClosed />
+              )}
+            </div>
+          ) : (
+            <CiUser className="text-white" />
           )}
-        </fieldset>
+        </>
       ) : (
         <>
-          <label htmlFor={id}>{labelText}</label>
+          <label htmlFor={id} className="text-white text-[14px] ">
+            {labelText}{" "}
+          </label>
           <input
             id={id}
             {...inp}
             type={type}
-            className={className}
-        
+            className={
+              type === "checkbox"
+                ? "border-0 bg-white  outline-none text-[12px]"
+                : "border-0 bg-white  outline-none text-[12px] w-[90%] "
+            }
           />
         </>
       )}

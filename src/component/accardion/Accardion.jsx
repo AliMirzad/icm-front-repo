@@ -7,9 +7,9 @@ const AccordionItem = ({ title, children, onAdd }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b-2 bg-white shadow-lg rounded-2xl my-6"> 
+    <div className=" bg-white shadow-lg rounded-2xl my-6"> 
       <div
-        className="flex justify-between items-center p-4 cursor-pointer transition-all duration-300 ease-in-out bg-blue-50 hover:bg-blue-200 hover:rounded-2xl" 
+        className="flex justify-between items-center p-4 cursor-pointer rounded-2xl transition-all duration-300 ease-in-out bg-blue-50 hover:bg-blue-200 hover:rounded-2xl" 
         onClick={() => setIsOpen(!isOpen)}
       >
         <h2 className="text-lg font-semibold text-gray-800">{title}</h2>

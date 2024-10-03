@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import LeftSide from "../Pages/Login/LeftSide/LeftSide";
+// import LeftSide from "../Pages/Login/component/LeftSide/LeftSide";
 const LoginLayout = () => {
   const location = useLocation();
 
@@ -7,7 +7,7 @@ const LoginLayout = () => {
 
   return (
     <div className="flex flex-row h-[500px"> 
-      {showLeftSide && <LeftSide />}  
+      {/* {showLeftSide && <LeftSide />}   */}
       <div className="flex-grow">  
         <Outlet />  
       </div>

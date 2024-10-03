@@ -4,14 +4,13 @@ import updateIcmUser from "../../../Api/IcmApi/updateIcmUser";
 import Modal from "./Modal/ModalAddUser";
 import ModalInfo from "./Modal/ModalInfo";
 import ModalEdit from "./Modal/ModalEdit";
-import { FaUserPlus,FaTrash } from "react-icons/fa6";
+import { FaUserPlus } from "react-icons/fa6";
 import { FcNext, FcPrevious } from "react-icons/fc";
-import { FaEye } from "react-icons/fa";
-import { CiEdit } from "react-icons/ci";
 import getAllIcmUser from "../../../Api/IcmApi/getAllIcmUser";
 import Table from "../../../component/table/Table";
 import deleteIcmUser from "../../../Api/IcmApi/deleteIcmUser";
 import ModalDelete from "./Modal/ModalDelete";
+
 export const Main = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,7 +29,13 @@ export const Main = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(3);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);  // State for delete modal
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const accessControl = {
+    read: false,
+    edit: true,
+    delete: true,
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -69,19 +74,20 @@ export const Main = () => {
     if (selectedUser && selectedUser.id) {
       try {
         const response = await updateIcmUser({
-          ...selectedUser,  
-          ...updatedUser,  
-          id: selectedUser.id,  
+          ...selectedUser,
+          ...updatedUser,
+          id: selectedUser.id,
         });
-        setData(data.map((user) => (user.id === response.id ? response : user)));
+        setData(
+          data.map((user) => (user.id === response.id ? response : user))
+        );
       } catch (error) {
-        console.error('Failed to update user:', error);
+        console.error("Failed to update user:", error);
       }
     } else {
       console.error("Selected user is not valid:", selectedUser);
     }
   };
-  
 
   const handleShowUser = (user) => {
     setSelectedUser(user);
@@ -105,60 +111,31 @@ export const Main = () => {
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredData.slice(indexOfFirstUser, indexOfLastUser);
   const totalPages = Math.ceil(filteredData.length / usersPerPage);
-  console.log({ data });
 
   const handleDeleteUser = async () => {
     if (selectedUser && selectedUser.id) {
       try {
         await deleteIcmUser(selectedUser.id);
         setData(data.filter((user) => user.id !== selectedUser.id));
-        setIsDeleteModalOpen(false);  
+        setIsDeleteModalOpen(false);
       } catch (error) {
-        console.error('Failed to delete user:', error);
+        console.error("Failed to delete user:", error);
       }
     }
   };
 
   const handleDeleteClick = (user) => {
     setSelectedUser(user);
-    setIsDeleteModalOpen(true); 
+    setIsDeleteModalOpen(true);
   };
-  const headerMappings = {
-    username: "Username",
-    firstName: "First Name",
-    lastName: "Last Name",
-    phone: "Phone Number",
-    actions: "Actions",
-  };
-  const headers = ["username", "firstName", "lastName", "phone", "actions"];
 
-  const tableData = filteredData.map((user) => ({
+  const headers = ["username", "firstName", "lastName", "phone", "actions"];
+  const tableData = currentUsers.map((user) => ({
     username: user.username,
     firstName: user.firstName,
     lastName: user.lastName,
     phone: user.phone,
-    actions: (
-      <div className="">
-        <button
-          onClick={() => handleShowUser(user)}
-          className="bg-green-500 text-white px-2 py-1 rounded ml-2"
-        >
-          <FaEye />
-        </button>
-        <button
-          onClick={() => handleEditUser(user)}
-          className="bg-blue-400 text-white px-2 py-1 rounded ml-2 "
-        >
-          <CiEdit className="bg-blue-400" />
-        </button>
-        <button
-          onClick={() => handleDeleteClick(user)}  
-          className="bg-red-500 text-white px-2 py-1 rounded"
-        >
-          <FaTrash />
-        </button>
-      </div>
-    ),
+    id: user.id,
   }));
 
   return (
@@ -183,7 +160,10 @@ export const Main = () => {
       <Table
         headers={headers}
         data={tableData}
-        headerMappings={headerMappings}
+        accessControl={accessControl}
+        onRead={handleShowUser}
+        onEdit={handleEditUser}
+        onDelete={handleDeleteClick}
       />
 
       <div className="flex justify-between mt-4 w-4/5 items-center">
@@ -229,7 +209,8 @@ export const Main = () => {
         user={selectedUser}
         setUser={setSelectedUser}
       />
-        <ModalDelete
+
+      <ModalDelete
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
         onDelete={handleDeleteUser}

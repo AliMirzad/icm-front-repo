@@ -39,8 +39,8 @@ export const BaseInfoManagement = () => {
   const headers = ["id", "title"]; 
 
   const sections = [
-    { title: "سطوح دسترسی", headers, data: data.accessLevelTypes.map(item => ({ ...item, canEdit: true, canDelete: false })) },
-    { title: "محتوای صفحات", headers, data: data.contentTypes },
+    { title: "سطوح دسترسی", headers, data: data.accessLevelTypes.map(item => ({ ...item})) },
+    { title: "محتوای صفحات", headers, data: data.contentTypes.map(item=>({...item})) },
     { title: "File Types", headers, data: data.fileTypes },
     { title: "جنسیت", headers, data: data.genderTypes },
     { title: "مکان", headers, data: data.locationTypes }

@@ -12,7 +12,7 @@ export const Dashboard = () => {
           {/* <Sidebar /> */}
           <Slic/>
         </div>
-        <div className="flex flex-col w-3/4 mx-auto ">
+        <div className="flex flex-col w-3/4 mx-auto overflow-auto">
          
           <Outlet />
         </div>
