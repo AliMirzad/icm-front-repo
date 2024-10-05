@@ -18,7 +18,7 @@ export const Login = () => {
     try {
       await loginUser(data.username, data.password);
       setError(null);
-      navigate("/dashboard");
+      navigate("/dashboard/main");
     } catch (err) {
       setError(err.message);
       setSubmit(false);

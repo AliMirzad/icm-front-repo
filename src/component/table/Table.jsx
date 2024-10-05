@@ -3,8 +3,8 @@ import "./table.css";
 import { FaTrash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
-import { ReadButton ,EditButton ,DeleteButton } from "../button/Btn";
-const Table = ({ headers, data, accessControl ,onRead ,onEdit, onDelete}) => {
+import { ReadButton, EditButton, DeleteButton } from "../button/Btn";
+const Table = ({ headers, data, accessControl, onRead, onEdit, onDelete }) => {
   const headerLabels = {
     username: "نام کاربری",
     firstName: "نام",
@@ -28,7 +28,7 @@ const Table = ({ headers, data, accessControl ,onRead ,onEdit, onDelete}) => {
           {headers.map((header, index) => (
             <th key={index}>{headerLabels[header] || header}</th>
           ))}
-          <th>اقدامات</th> 
+          <th>اقدامات</th>
         </tr>
       </thead>
       <tbody>
@@ -38,18 +38,18 @@ const Table = ({ headers, data, accessControl ,onRead ,onEdit, onDelete}) => {
               <td key={cellIndex}>{row[header]}</td>
             ))}
             <td>
-              <ReadButton
-                onClick={() => onRead(row)} 
-                disabled={!accessControl.read}
-              />
-              <EditButton
-                onClick={() => onEdit(row)}
-                disabled={!accessControl.edit}
-              />
-              <DeleteButton
-                onClick={() => onDelete(row)}
-                disabled={!accessControl.delete}
-              />
+                {onRead && (
+                <ReadButton onClick={() => onRead(row)} disabled={!accessControl.read}
+                />
+              )}
+              {onEdit && (
+                <EditButton onClick={() => onEdit(row)} disabled={!accessControl.edit}
+                />
+              )}
+              {onDelete && (
+<DeleteButton onClick={() => onDelete(row)} disabled={!accessControl.delete}
+ />
+              )}
             </td>
           </tr>
         ))}
