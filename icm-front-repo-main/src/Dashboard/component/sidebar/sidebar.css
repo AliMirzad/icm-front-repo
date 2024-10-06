@@ -1,0 +1,127 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 1rem;
+  transition: width 300ms ease; /* انیمیشن تغییر عرض */
+}
+
+.sidebar-expanded {
+  width: 20%; /* عرض اصلی ساید بار */
+}
+
+.sidebar-collapsed {
+  width: 60px;
+  background: rgb(186, 186, 208); /* عرض ساید بار در حالت جمع شده */
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  transition: all 300ms ease; /* انیمیشن */
+}
+
+/* تنظیمات عرض برای محتوای ساید بار */
+.sidebar-content.expanded {
+  width: 200px; /* عرض ساید بار در حالت باز */
+}
+
+.sidebar-content.collapsed {
+  width: 60px; /* عرض ساید بار در حالت جمع شده */
+}
+
+.toggle-button {
+  background-color: #167eba;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* برای نمایش یا عدم نمایش عنوان */
+.menuItem > span {
+  display: block;
+}
+
+.collapsed .menuItem > span {
+  display: none; /* مخفی کردن عنوان در حالت جمع شده */
+}
+
+.menu {
+  margin-top: 2rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  color: whitesmoke;
+  gap: 1rem;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  margin-right: 10px;
+  position: relative;
+  padding-right: 10px;
+  transition: all 300ms ease;
+  border-radius: 0.7rem;
+  font-size: 14px;
+  width: 100%;
+}
+
+.menuItem:hover {
+  cursor: pointer;
+}
+
+.active {
+  background-color: whitesmoke;
+  margin-left: 0;
+  color: black;
+  width: 100%;
+}
+.active-icon {
+  /* تنظیمات برای آیکون فعال */
+  color: black; /* یا هر رنگ دیگری که می‌خواهید */
+}
+/* .active::before {
+  content: "";
+  width: 8px;
+  height: 100%;
+  background-color: black;
+  margin-right: calc(1rem - 8px);
+} */
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .menuItem > span {
+    display: none;
+  }
+  .logo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+    position: fixed;
+    z-index: 9;
+    background: #fff;
+    width: 55%;
+    height: 100%;
+  }
+  .bars {
+    display: flex;
+    position: fixed;
+    top: 2rem;
+    left: 60%;
+    background: #167eba;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 9;
+  }
+}
