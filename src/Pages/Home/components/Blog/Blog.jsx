@@ -36,17 +36,17 @@ const Blog = () => {
           animate={controls}
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="w-full flex  group justify-between items-center"
+          className="w-full flex  group justify-between items-center p-[30px] h-[50px] leading-[50px] bg-white hover:shadow-lg transition-all duration-300 group"
         >
-          <span className="mt">تجزیه و تحلیل کاربردی UX</span>
-          <Arrow className={"group-hover:stroke-[#19192E]"} hidden={true} />
+          <span >تجزیه و تحلیل کاربردی UX</span>
+          <Arrow  />
         </motion.div>
 
         <motion.div
           animate={controls}
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.5, delay: 0.75 }}
-          className="w-full flex  group justify-between items-center"
+         className="w-full flex  group justify-between items-center p-[30px] h-[50px] leading-[50px] bg-white hover:shadow-lg transition-all duration-300 group"
         >
           طراح و توسعه دهنده Front-End
           <Arrow />
@@ -56,7 +56,7 @@ const Blog = () => {
           animate={controls}
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="w-full flex  group justify-between items-center"
+         className="w-full flex  group justify-between items-center p-[30px] h-[50px] leading-[50px] bg-white hover:shadow-lg transition-all duration-300 group"
         >
           طراح و توسعه دهنده Back-End
           <Arrow hidden={true} />
@@ -90,7 +90,7 @@ const Blog = () => {
           initial={{ opacity: 0 }}
           animate={secondControls}
           transition={{ duration: 0.5, delay: 0.75 }}
-          className="flex flex-col items-start px-[20px] absolute end-[30px] top-[45px] bg-white justify-start gap-y-[20px]"
+          className="flex flex-col items-start px-[20px] absolute end-[30px] top-[45px] bg-white justify-start gap-y-[20px] rounded-[16px] shadow-[0px_1px_48px_rgba(0,0,0,0.05)] p-[40px]"
         >
           <h2 className="text-[40px] px-[20px] text-[#19192E]">
             تکنیکس و هوش مصنوعی

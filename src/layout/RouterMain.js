@@ -21,9 +21,10 @@ const RouterMain = () => {
         <Route
           path="/dashboard"
           element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
+          
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
           }
         >
           <Route index element={<Navigate replace to="/dashboard" />} />

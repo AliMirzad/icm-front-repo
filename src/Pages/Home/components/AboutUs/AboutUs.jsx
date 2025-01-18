@@ -21,17 +21,16 @@ const AboutUs = ({ changeColor }) => {
 
     loadData();
   }, []);
-  console.log(data);
   return (
-    <div className="w-full flex justify-center ">
+    <div className="w-full flex justify-center mt-[420px] ">
       {data.map((elem) => {
         return (
-          <div className="w-[487px] " key={elem.id}>
+          <div className="w-[487px] flex flex-col gap-y-[25px] " key={elem.id}>
             <h2
               className={
                 !changeColor
-                  ? "text-[36px] text-[#4C4C52] transition-all duration-300"
-                  : "text-[36px] text-[#d4d4d5] transition-all duration-300"
+                  ? "text-[16px] text-[#4C4C52] transition-all duration-300"
+                  : "text-[16px] text-[#d4d4d5] transition-all duration-300"
               }
             >
               {elem.title}
@@ -39,8 +38,8 @@ const AboutUs = ({ changeColor }) => {
             <p
               className={
                 !changeColor
-                  ? "mt-[25px] text-[32px] transition-all duration-300 "
-                  : "mt-[25px] text-[32px] text-white transition-all duration-300"
+                  ? " text-[27px] transition-all duration-300 "
+                  : " text-[27px] text-white transition-all duration-300"
               }
             >
               {elem.text}

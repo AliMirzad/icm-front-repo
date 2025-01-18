@@ -18,12 +18,37 @@
   cursor: pointer;
 }
 .active {
-  background-color: rgba(245, 245, 245, 0.284);
-  margin-left: 0;
-  color: black;
+  background-color: white;
+  color: #2a2185;
   width: 100%;
-  text-align: right;
-  padding: 10px 0px;
+&::before{
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: -35px 35px 0 10px white;;
+  pointer-events: none;
+}
+&::after{
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: -35px -35px 0 10px white;
+  pointer-events: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
 }
 .icon-size {
   font-size: 24px; /* می‌توانید اندازه مورد نظر خود را انتخاب کنید */
@@ -32,13 +57,13 @@
 li.active .icon-size {
   font-size: 44px; /* در حالت اکتیو هم اندازه ثابت بماند */
 }
-.active::before {
+/* .active::before {
   content: "";
   width: 8px;
   height: 100%;
   background-color: black;
   margin-right: calc(1rem - 8px);
-}
+} */
 
 #header .pro-sidebar {
   width: 100%;

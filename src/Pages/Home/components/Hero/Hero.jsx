@@ -22,7 +22,7 @@ const Hero = () => {
     show: { opacity: 1, y: 0 },
   };
   return (
-    <motion.div className="w-full h-screen relative bg-white-700 flex justify-start">
+    <motion.div className="w-full h-screen relative  flex justify-center items-center">
       <Menu />
       <motion.div
         variants={{
@@ -47,8 +47,8 @@ const Hero = () => {
         className="flex-1 h-full bg-blue-700 bg-fixed bg-center"
         style={{ height: hideHeroLeft }}
       ></motion.div>
-      <motion.div className="w-[240px] h-[400px] z-[10]   inset-0 m-auto text-white font-bold flex flex-col gap-y-[10px]  overflow-hidden  absolute text-[48px]">
-        <motion.div className="h-[80px]">
+      <motion.div className="w-[540px] h-[450px] z-[10] absolute  inset-0 m-auto text-white font-bold flex flex-col gap-y-[10px]  overflow-hidden  text-[60px]">
+        <motion.div className=" w-full h-[80px]">
           <motion.p
             variants={textHide}
             transition={{ duration: 0.5, delay: 1.25 }}
@@ -58,7 +58,7 @@ const Hero = () => {
             طراحی
           </motion.p>{" "}
         </motion.div>
-        <div className="h-[80px]">
+        <div className=" w-full h-[80px]">
           <motion.p
             variants={textHide}
             transition={{ duration: 0.5, delay: 1.5 }}
@@ -68,7 +68,7 @@ const Hero = () => {
             محصولات
           </motion.p>
         </div>
-        <div className="h-[80px]">
+        <div className=" w-full h-[80px]">
           <motion.p
             variants={textHide}
             transition={{ duration: 0.5, delay: 1.75 }}
@@ -78,7 +78,7 @@ const Hero = () => {
             دیجیتال
           </motion.p>
         </div>
-        <div className="h-[80px]">
+        <div className=" w-full h-[80px]">
           <motion.p
             variants={textHide}
             transition={{ duration: 0.5, delay: 2 }}
@@ -88,7 +88,7 @@ const Hero = () => {
             برای فکرهای{" "}
           </motion.p>
         </div>
-        <div className="h-[80px]">
+        <div className=" w-full h-[80px]">
           <motion.p
             variants={textHide}
             transition={{ duration: 0.5, delay: 2.25 }}
@@ -105,5 +105,6 @@ const Hero = () => {
     </motion.div>
   );
 };
+
 
 export default Hero;

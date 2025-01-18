@@ -76,5 +76,4 @@ const Goals = () => {
     </div>
   );
 };
-
 export default Goals;

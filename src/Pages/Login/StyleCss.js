@@ -1,25 +1,20 @@
-export let btnClass =
-  " w-full h-[45px] border-0 ount-line-none bg-white text-black shadow-shadow rounded-[40px] font-bold text-[16px]	";
-export let form =
-  "flex w-full flex-col  h-full justify-center md:rounded-e-[24px] gap-[40px] items-center text-center";
-export let inputContainer =
-  "flex flex-row flex-wrap  w-full gap-[10px] h-[50px] text-[18px] justify-center items-center rounded-[40px]  border-[2px] border-solid border-borderinput ";
-export let disableBtn =
-  "pointer-events-none bg-opacity-10 border-opacity-bg-opacity-70";
-
-export let forgetPassStyle = "my-[10px] block text-blue-500 ";
-export let input =
-  "h-full   w-[80%] p-[20px] pe-[45px] bg-transparent text-white placeholder:text-white placeholder:text-[16px] outline-none ";
-export let formContainer =
-  "w-[420px]   flex flex-col rounded-[10px] py-[30px] px-[40px] shadow-shadow backdrop-blur-[30px] border-[2px] border-solid border-black border-opacity-20 justify-center flex-wrap";
-export let title =
-  "w-full text-center text-[36px] text-white font-bold ";
-export let checkboxMobilewraper = " md:h-auto h-full  ";
-export let checkboxMobile =" flex items-center gap-[5px]";
-export let error="border-rose-600"
-export let popupContainer="absolute  flex justify-center items-center z-[999999]"
-export let popup="bg-white p-[20px] relative rounded-[8px] text-center shadow-shadow"
-export let  errorIcon=" text-rose-600 bock mx-auto text-[48px] mb-[20px]"
-export let errorMessage=" text-[16px] text-rose-600 mb-[20px] "
-export let closeButton="absolute top-0 right-[0px] text-black  text-[32px] cursor-pointer "
-export let normalBorder=" border-white"
+export const formConatiner =
+  "w-[500px] h-[500px]  flex justify-center items-center absolute inset-0 m-auto";
+export const form =
+  "absolute  w-[300px] h-full flex justify-center items-center flex-col gap-y-[20px]  ";
+export const formTitle = "text-[2em] text-white";
+export const inputContainer =
+  "relative h-[40px]  w-full px-[20px] flex  justify-center items-center  rounded-[40px] pe-[10px] border-[2px] border-white border-solid";
+export const input =
+  "w-[100%] h-full   bg-transparent  text-[1.2em] text-white outline-none  placeholder:text-white placeholder:text-opacity-75";
+export const btn = "bg-white text-black";
+export const animatedBorder = "absolute inset-0 border-[4px] border-solid ";
+export const roundedFirst =
+  "rounded-roundedFirst drop-shadow-[0px_0px_20px_#3b82f6] border-[#3b82f6] animate-spin duration-[6000ms]";
+export const roundedSecond =
+  "rounded-roundedSecond drop-shadow-[0px_0px_20px_#60a5fa] border-[#60a5fa] animate-spin duration-[7000ms]";
+export const roundedThird =
+  "rounded-roundedThird border-[#93c5fd] drop-shadow-[0px_0px_20px_#93c5fd] animate-spin duration-[8000ms]  ";
+export const svgStyle = "w-[24px] h-[24px] mt-[5px]";
+export const paddingNone = "px-0 py-0";
+export const error = "border-rose-500";

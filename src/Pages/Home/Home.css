@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .slider::-webkit-scrollbar {
     width: 8px;
@@ -31,4 +34,14 @@
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+}
+@font-face {
+  font-family: Iran;
+  src: url('../../component/Font/IRANYekanWeb.eot');
+  src: url('../../component//Font/IRANYekanWeb.ttf');
+  src: url('../../component//Font/IRANYekanWeb.woff');
+  src: url('../../component//Font/IRANYekanWeb.woff2');
+}
+body{
+  font-family: Iran;
 }

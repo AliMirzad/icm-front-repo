@@ -1,7 +1,7 @@
 import hos from "../../../images/hosein.jpg";
 export const ProfileUser = () => {
   return (
-    <div className="flex  justify-center  w-full items-center h-4/5 rounded-3xl bg-gray-100 mt-3 mx-auto">
+    <div className="flex  justify-center  w-full items-center h-4/5 rounded-3xl bg-rose-600  mx-auto">
       <div className="bg-white shadow-md rounded-lg p-6 w-4/5 flex flex-col">
         <div className="text-center">
           <h1>Tech Nyx</h1>

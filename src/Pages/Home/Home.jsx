@@ -1,3 +1,4 @@
+import Footer from "../../component/footer/Footer";
 import Blog from "./components/Blog/Blog";
 import Goals from "./components/Goals/Goals";
 import Hero from "./components/Hero/Hero";
@@ -12,6 +13,7 @@ export const Home = () => {
       <Goals />
       <Tech />
       <Blog />
+      <Footer/>
     </div>
   );
 };

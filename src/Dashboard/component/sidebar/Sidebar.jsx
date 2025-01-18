@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./sidebar.css";
+// import "./sidebar.css";
 import { Logo } from "../Logo/Logo";
 import { SidebarData } from "./data-in-sidebar/SidebarData";
 import { UilBars } from "@iconscout/react-unicons";
@@ -16,7 +16,7 @@ const Sidebar = ({ setSidebarExpanded, expanded }) => {
 
   return (
     <div className={`sidebar ${expanded ? "sidebar-expanded" : "sidebar-collapsed"} h-full bg-[#202531] text-white`}>
-      <div className="bars" onClick={toggleSidebar}>
+      <div className="bars bg-indigo-600" onClick={toggleSidebar}>
         <UilBars />
       </div>
       <motion.div

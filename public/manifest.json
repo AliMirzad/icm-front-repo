@@ -1,25 +1,10 @@
-{
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
+[
+  {
+    "username": "icmAdmin",
+    "password": "1234",
+    "responseTime": "2024-11-28T08:13:08.886097793",
+    "id": 59,
+    "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpY21BZG1pbiIsImlhdCI6MTczMjc4MTU4OCwiZXhwIjoxNzMyNzgyNDg4fQ.JP0DHW4FznHLJZIOMjgSIMBfO-YcracQLoyx_l4vF3U",
+    "refreshToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpY21BZG1pbiIsImlhdCI6MTczMjc4MTU4OCwiZXhwIjoxNzMyODY3OTg4fQ.Nu4tLJG2mbccQN1roJYgaN_NFllT6obwoF3bHqNoRyE"
+  }
+]

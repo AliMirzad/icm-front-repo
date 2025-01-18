@@ -7,6 +7,7 @@ import image4 from '../../../../images/images/image4.png'
 import { useEffect, useRef } from "react";
 import Arrow from "../Arrow";
 
+
 const Tech = () => {
   const data = [image1, image2, image3, image4];
   const parentRef = useRef(null); 
@@ -56,18 +57,18 @@ const Tech = () => {
       <motion.div
         initial={{ opacity: 0, x: 100 }}
         animate={secondControls}
-        className="flex flex-col items-start px-[20px] absolute start-20 bottom-[15px] bg-white justify-start gap-y-[20px]"
+        className="flex flex-col items-start p-[40px] absolute start-20 bottom-[15px] bg-white justify-start gap-y-[20px] rounded-[16px] shadow-[0px_1px_48px_rgba(0,0,0,0.05)]"
       >
-        <h2 className="text-[40px] px-[20px] text-[#19192E]">
+        <h2 className="text-[40px] text-[#19192E]">
           تکنیکس و هوش مصنوعی
         </h2>
-        <p className="text-[24px] px-[20px] w-[550px]">
+        <p className="text-[16px] w-[550px]">
           به عنوان یک طراح گرافیک، ممکن است در مورد هوش مصنوعی (AI) و تأثیر آن
           روی کار گرافیست‌ها شنیده باشید. هوش مصنوعی این پتانسیل را دارد که با
           بهینه و خلاقانه‌تر کردن فرآیند طراحی، شیوه کار شما را متحول کند. در
           این مقاله، ما نحوه کمک هوش مصنوعی به گرافیست‌ها را بررسی می‌کنیم.
         </p>
-        <div className="flex px-[20px] justify-start gap-[20px] stroke-[#19192E] text-[#19192E] text-[32px] items-center w-full">
+        <div className="flex justify-start gap-[20px] stroke-[#19192E] text-[#19192E] text-[20px] items-center w-full">
           بیشتر
           <Arrow color={"#19192E"} />
         </div>

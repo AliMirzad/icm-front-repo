@@ -266,5 +266,4 @@ const HeroLogo = () => {
     </svg>
   );
 };
-
 export default HeroLogo;

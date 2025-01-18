@@ -28,7 +28,9 @@ const Menu = () => {
   }, []);
 
   return (
-    <div className="w-full fixed z-[9999999] top-0 items-start flex justify-around">
+    <motion.div transition={{ duration: 0.5, delay: 1 }}
+             
+    style={{ y: menuPlace }} className="w-full fixed z-[9999999] top-0 items-start flex justify-around">
       {data.map((elem) => {
         return (
           <>
@@ -58,8 +60,7 @@ const Menu = () => {
           </>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
-
 export default Menu;

@@ -80,20 +80,20 @@
 .active {
   background-color: whitesmoke;
   margin-left: 0;
-  color: black;
-  width: 100%;
+  color: #2a2185;
+  width: 50%;
 }
 .active-icon {
   /* تنظیمات برای آیکون فعال */
   color: black; /* یا هر رنگ دیگری که می‌خواهید */
 }
-.active::before {
+/* .active::before {
   content: "";
   width: 8px;
   height: 100%;
   background-color: black;
   margin-right: calc(1rem - 8px);
-}
+} */
 
 /* Responsive styles */
 @media screen and (max-width: 1200px) {

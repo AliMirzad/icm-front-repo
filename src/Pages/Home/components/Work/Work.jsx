@@ -65,6 +65,7 @@ const Work = ({ sendDataToParent }) => {
       ref={elementRef}
       className="w-full  mt-[50px] flex  justify-center items-center flex-wrap h-[800px] bg-transparent"
     >
+      <h2 className="w-2/3 text-[40px] font-bold text-white items-center flex justify-between">هدف‌ها <Arrow/></h2>
       <div className="w-2/3 h-[500px]  slider overflow-auto scrollbar-thin scrollbar-thumb-orange-50 scrollbar-thumb-rounded-md slider">
         {data.map((elem, index) => {
           return (
@@ -88,17 +89,17 @@ const Work = ({ sendDataToParent }) => {
                 }
               >
                 <div className="w-[40%] flex flex-col gap-y-[30px]  text-white">
-                  <h3 className="text-[32px]">{elem.title}</h3>
-                  <p className="text-[16px] text-[#D9D9D9]">{elem.text}</p>
+                  <h3 className="text-[40px]">{elem.title}</h3>
+                  <p className="text-[20px] text-[#D9D9D9]">{elem.text}</p>
                   <div
                     className={
                       elem.id !== 4
-                        ? "w-full flex justify-between items-center "
-                        : "w-[40%] flex justify-between items-center "
+                        ? "w-full flex justify-start gap-[11px] items-center text-[14px] "
+                        : "w-[40%] flex justify-start gap-[11px] items-center text-[14px] "
                     }
                   >
                     بیشتر
-                    <Arrow />
+                    <Arrow veiw={isInView} />
                   </div>
                 </div>
               </div>
@@ -109,22 +110,5 @@ const Work = ({ sendDataToParent }) => {
     </div>
   );
 };
-
 export default Work;
 
-/*
-     {
-            index === 0 && (
-              <div className="w-full flex justify-start h-full  sticky top-0    items-center">
-                {elem.map((item, index) => {
-                  <img
-                    key={index}
-                    src={item}
-                    alt=""
-                    className="w-1/2 h-full  object-cover"
-                  />;
-                })}
-              </div>
-            );
-          }
-*/

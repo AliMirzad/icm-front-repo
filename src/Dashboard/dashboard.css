@@ -20,9 +20,9 @@
     #80c1ff 51.55%,
     #4da3ff 90.85%
   ); */
-  background: #2247a5cc;
+  background: #2a2185;
   height: 100vh;
-  backdrop-filter: blur(6.7px);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,28 +32,25 @@
 .AppGlass {
   display: flex;
   flex-direction: row;
-  height: 98%;
-  width: 98%;
+  height:100vh;
+  width: 100%;
   /* background: var(--glass); */
-  background-color: whitesmoke;
-  border-radius: 2rem;
-  gap: 16px;
+  background-color: white;
+ 
+
   overflow: hidden;
 }
 .sidebar-expanded {
-  width: 20%; 
-
+  width: 20%;
 }
 
 .sidebar-collapsed {
-  /* width: 60px; */
-  background: #a0d8ef; /* عرض ساید بار در حالت جمع شده */
+  width: 60px;
+  background: rosybrown; /* عرض ساید بار در حالت جمع شده */
 }
 
-
-
 .AppGlass .sidebar {
-  width: 13rem;
+  width: 100%;
   flex-shrink: 0;
 }
 
