@@ -15,8 +15,8 @@ export const Dashboard = () => {
         <div
           className={
             open
-              ? "w-1/5 transition-all duration-300 bg-purple-700"
-              : "w-[5%] transition-all duration-300"
+              ? "w-1/5 transition-all duration-300  "
+              : "w-[5%] transition-all duration-300 "
           }
         >
           {/* <Sidebar /> */}
@@ -25,8 +25,8 @@ export const Dashboard = () => {
         <div
           className={
             open
-              ? "flex flex-col w-4/5 justify-center  px-[20px]  transition-all duration-300"
-              : "transition-all duration-300 flex flex-col w-[95%] justify-center "
+              ? "flex flex-col w-4/5 justify-center    transition-all duration-300 bg-gray-200"
+              : "transition-all duration-300 flex flex-col w-[95%] justify-center bg-gray-200"
           }
         >
           <Outlet />

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getAllContentType = async () => {
-  const url = "http://5.34.207.195:8080/icm/baseInfo/v1/getContentTypes";
+  const url = "http://5.34.206.81:8080/icm/exclusive/baseInfo/v1/getAllManagementTypeCode";
   try {
     const response = await axios.get(url);
     return response.data;
@@ -12,3 +12,4 @@ const getAllContentType = async () => {
 };
 
 export default getAllContentType;
+//okay

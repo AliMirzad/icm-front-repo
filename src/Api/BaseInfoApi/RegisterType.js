@@ -23,4 +23,3 @@ const RegisterType = async (newUser) => {
   };
   
   export default RegisterType;
-  

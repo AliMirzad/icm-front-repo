@@ -17,4 +17,6 @@ export const roundedThird =
   "rounded-roundedThird border-[#93c5fd] drop-shadow-[0px_0px_20px_#93c5fd] animate-spin duration-[8000ms]  ";
 export const svgStyle = "w-[24px] h-[24px] mt-[5px]";
 export const paddingNone = "px-0 py-0";
-export const error = "border-rose-500";
+export const error_1 = "drop-shadow-[0px_0px_20px_rose-500] border-rose-500 rounded-roundedFirst";
+export const error_2 = "drop-shadow-[0px_0px_20px_rose-600] border-rose-600 rounded-roundedSecond";
+export const error_3 = "drop-shadow-[0px_0px_20px_rose-700] border-rose-700 rounded-roundedThird";

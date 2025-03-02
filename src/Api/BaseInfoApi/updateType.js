@@ -1,28 +1,22 @@
-const updateTypes = async (user) => {
-    try {
-      const accessToken = localStorage.getItem("accessToken");
-      const response = await fetch(`http://5.34.207.195:8080/icm/user/v1/updateIcmUser`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify(user),
-      });
-  
-      if (!response.ok) {
-        const errorResponse = await response.json();
-        console.error('Update failed:', errorResponse);
-        throw new Error(`Failed to update user: ${errorResponse.message || response.statusText}`);
-      }
-  
-      const updatedUser = await response.json();
-      return updatedUser;
-    } catch (error) {
-      console.error('Error in updateIcmUser:', error);
-      throw error;
-    }
+import axios from "axios";
+
+const updateTypes = async (id,code,type,title,pro,email) => {
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+
+    const response = await axios.put(`http://5.34.206.81:8080/icm/exclusive/baseInfo/v1/updateManagementType/${id}`, {id,code,type,title,pro,email},{
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+
+    });
+
+    console.log(response.data);
+    
+  } catch (error) {
+    console.error("Error updating user:", error);
+  }
   };
   
   export default updateTypes
-  

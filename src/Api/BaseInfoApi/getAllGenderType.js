@@ -3,8 +3,10 @@ import axios from "axios";
 const getAllGenderType = async () => {
   const url = "http://5.34.207.195:8080/icm/baseInfo/v1/getGenderTypes";
   try {
+    
     const response = await axios.get(url);
-    return response.data;
+
+    // return response.data;
   } catch (error) {
     console.error("Error:", error.message);
     return [];

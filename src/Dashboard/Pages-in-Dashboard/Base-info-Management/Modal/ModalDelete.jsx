@@ -1,7 +1,33 @@
-import React from "react";
-import Modal from '../../../../component/modal/Modal'
-const ModalDelete = ({ isOpen, onClose,onDelete, title, content, onConfirmDelete }) => {
-    if (!isOpen) return null;
+import React, { useEffect, useState } from "react";
+import Modal from "../../../../component/modal/Modal";
+import deleteType from "../../../../Api/BaseInfoApi/deleteType";
+import { Link, useNavigate } from "react-router-dom";
+const ModalDelete = ( {id,showDelteModalFn,reloadFn,showDelteModal} ) => {
+  let [data, setData] = useState([]);
+  console.log(data);
+  
+  const navigate = useNavigate();
+  let [massage,setMassage]=useState("")
+  
+  
+  const deletTypeMang = async () => {
+    try {
+      let response = await deleteType(id);
+      let data=await response.data
+      setData(data);
+      
+      setMassage(data.responseMessage)
+      
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+const handleCloseModal=()=>{
+  showDelteModalFn(false)
+  reloadFn()
+}
+
 
   return (
     // <Modal isOpen={isOpen} onClose={onClose} title={title}>
@@ -16,29 +42,26 @@ const ModalDelete = ({ isOpen, onClose,onDelete, title, content, onConfirmDelete
     //     </button>
     //   </div>
     // </Modal>
-    <div className="fixed inset-0 flex items-center justify-center text-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white rounded-lg shadow-lg w-1/3 p-6 transform transition-transform duration-300 scale-95 hover:scale-100">
-        <h3 className="text-lg font-semibold mb-4 text-red-600">
-            حذف ایتم
-        </h3>
-        <p className="mb-6 text-gray-700">
-         آیا از حذف این ایتم مطمین هستنید ؟
-        </p>
+    <div className={`  inset-0 absolute items-center  text-center bg-black bg-opacity-50 z-[99999] `}>
+      <div className="bg-white rounded-lg flex justify-center items-center flex-col absolute inset-0 m-auto w-[500px] h-[300px] p-6 transform transition-transform duration-300 scale-95 hover:scale-100">
+      {massage?<h3 className="text-lg font-semibold mb-4 text-red-600">{massage}</h3>:<>
+        <h3 className="text-lg font-semibold mb-4 text-red-600">حذف ایتم</h3>
+        <p className="mb-6 text-gray-700">آیا از حذف این ایتم مطمین هستنید ؟</p>
+      </>}
         <div className="flex justify-center  gap-5 space-x-4">
-          <button
-            onClick={onClose}
-            className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors duration-200"
-          >
-           خیر
+        {massage?<Link onClick={handleCloseModal} className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200">
+            بازگشت
+          </Link>:<>
+          <button onClick={handleCloseModal} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors duration-200">
+            خیر
           </button>
-          <button
-            onClick={onDelete}
-            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200"
-          >
+          <button onClick={deletTypeMang} className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200">
             بله
           </button>
+        </>}
         </div>
       </div>
+      
     </div>
   );
 };

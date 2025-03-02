@@ -14,54 +14,72 @@ const Input = ({
   type,
   parentWraper,
   svgStyle,
+  onFocus,
+  hasIcon,
+  onBlur,
+  onChange
+  
 }) => {
   const [shouwPassWord, setShowPassword] = useState(false);
   const hadleChangeIcon = (e) => {
     setShowPassword((a) => !a);
-    
   };
   return (
     <div className={parentWraper}>
-      {type !== "checkBox" && type!=="submit" ? (
+      {type !== "checkBox" && type !== "submit" ? (
         <>
           <input
             id={id}
             {...inp}
             type={
-                id === "userName" ? type : (shouwPassWord ? "text" : "password")
-              }
+             type==="password"?shouwPassWord?"text":"password":type
+            }
             className={className}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onChange={onChange}
           />
-          {id === "password" ? (
+          {hasIcon === true ? (
             <>
-              {shouwPassWord === true ? (
-                <VscEyeClosed
-                  onClick={hadleChangeIcon}
-                  fill="white"
-                  className={svgStyle}
-                />
+              {id === "password" ? (
+                <>
+                  {shouwPassWord === true ? (
+                    <VscEyeClosed
+                      onClick={hadleChangeIcon}
+                      fill="white"
+                      className={svgStyle}
+                    />
+                  ) : (
+                    <VscEye
+                      onClick={hadleChangeIcon}
+                      fill="white"
+                      className={svgStyle}
+                    />
+                  )}
+                </>
               ) : (
-                <VscEye
-                  onClick={hadleChangeIcon}
-                  fill="white"
-                  className={svgStyle}
-                />
+                <CiUser fill="white" className={svgStyle} />
               )}
             </>
           ) : (
-            <CiUser fill="white" className={svgStyle} />
+            ""
           )}
         </>
       ) : (
         <>
-          {type!=="submit"?  <label htmlFor={id} className="text-white text-[14px] ">
-            {labelText}{" "}
-          </label>:""}
+          {type !== "submit" ? (
+            <label htmlFor={id} className="text-white text-[14px] ">
+              {labelText}{" "}
+            </label>
+          ) : (
+            ""
+          )}
           <input
             id={id}
             {...inp}
             type={type}
-          className={className}
+            className={className}
+            onFocus={onFocus}
           />
         </>
       )}

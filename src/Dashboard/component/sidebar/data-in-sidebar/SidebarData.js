@@ -5,7 +5,10 @@ import {
     UilPackage,
     UilChart,
     UilSignOutAlt,
+     
   } from "@iconscout/react-unicons";
+  import { IoPersonAddOutline } from "react-icons/io5";
+
   // import { link } from "react-router-dom";
   import { UilUsdSquare, UilMoneyWithdrawal } from "@iconscout/react-unicons";
   import { keyboard } from "@testing-library/user-event/dist/keyboard";
@@ -52,6 +55,11 @@ import {
       icon: UilChart,
       heading: "پشتیبانی",
       link: "/dashboard/support",
+    },
+    {
+      icon: IoPersonAddOutline ,
+      heading: "ایجادکاربر جدید",
+      link: "/dashboard/createUser",
     },
   ];
   

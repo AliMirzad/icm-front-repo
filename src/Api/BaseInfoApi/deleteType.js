@@ -1,14 +1,16 @@
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
-const deleteType = async (userId, accessToken) => {
+const deleteType = async (userId) => {
+  const accessToken=Cookies.get("accessToken")
+  
   try {
-    const response = await axios.delete(`http://5.34.207.195:8080/icm/user/deleteIcmUser/${userId}`, {
+    const response = await axios.delete(`http://5.34.206.81:8080/icm/exclusive/baseInfo/v1/deleteManagementType/${userId}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    console.log('User deleted:', response.data);
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error deleting user:', error);
     throw error;

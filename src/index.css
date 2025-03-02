@@ -1,6 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+
+
+  .scrollbar-custom::-webkit-scrollbar {
+      width: 5px; /* Scrollbar width for WebKit browsers */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+      background: transparent; /* Track color */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+      background-color: white; /* Thumb color */
+      border-radius: 4px; /* Rounded edges */
+      border: 2px solid #edf2f7; /* Padding around thumb */
+  }
+}
 
 body {
   margin: 0;
@@ -20,5 +37,6 @@ code {
   height: 100vh;
   background-image: url("../public/bg.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+ 
 }
